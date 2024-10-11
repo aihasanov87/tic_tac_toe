@@ -52,9 +52,11 @@ def main():
 
         if game.check_win(current_player):
             print(f'Победили {current_player}.')
+            save_result(f'Победили {current_player}.')
             running = False
         elif game.is_board_full():
             print('Ничья!')
+            save_result('Ничья')
             running = False
 
         # Тернарный оператор, через который реализована смена игроков.
@@ -62,6 +64,12 @@ def main():
         # иначе — новым значением будет X.
         current_player = 'O' if current_player == 'X' else 'X'
 
+
+
+def save_result(winner):
+    file = open('results.txt', 'a', encoding='utf-8')
+    file.write(f'{winner} \n')
+    file.close()
 
 if __name__ == '__main__':
     main()
