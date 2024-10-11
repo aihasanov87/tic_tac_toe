@@ -65,11 +65,10 @@ def main():
         current_player = 'O' if current_player == 'X' else 'X'
 
 
-
 def save_result(winner):
-    file = open('results.txt', 'a', encoding='utf-8')
-    file.write(f'{winner} \n')
-    file.close()
+    with open('results.txt', 'a', encoding='utf-8') as file:
+        file.write(f'{winner} \n')
+
 
 if __name__ == '__main__':
     main()
